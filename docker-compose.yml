@@ -39,8 +39,8 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      PMA_USER: ${MYSQL_USER}
-      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      # PMA_USER: ${MYSQL_USER}
+      # PMA_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
@@ -48,6 +48,7 @@ services:
       - '8080:80'
     volumes: 
       - /sessions
+      - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
   redis:
     container_name: 'sc-redis'
     image: redis:latest
